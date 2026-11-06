@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مفاجأة لأميرتي 🎀</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+:root{--pink:#ffb7d5;--deep:#e85b9c;--blue:#9fe8ff;--ink:#633b59}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:'Cairo',system-ui,sans-serif;color:var(--ink);background:linear-gradient(145deg,#fff0f7,#eafaff 55%,#fff7fc);overflow-x:hidden}
+.bubbles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.bubble{position:absolute;bottom:-90px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff 0 8%,#b9f0ff 18%,#70d9ff 65%,#55bce9 100%);opacity:.62;box-shadow:inset -5px -7px 12px #55bce955,0 5px 18px #83dfff44;animation:float linear infinite}
+@keyframes float{to{transform:translateY(-115vh) translateX(35px);opacity:0}}
+main{position:relative;z-index:1;width:min(92%,680px);margin:6vh auto;padding:28px 22px 34px;background:#ffffffd9;border:2px solid #fff;border-radius:30px;box-shadow:0 18px 55px #e78ab833;text-align:center;backdrop-filter:blur(8px)}
+h1{font-size:clamp(25px,6vw,36px);margin:4px 0 8px;color:#e45b9a}
+.subtitle{margin:0 0 24px;color:#8a6680}
+#question{font-size:clamp(20px,4.8vw,27px);font-weight:800;line-height:1.8;margin:24px 0}
+.buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;min-height:58px}
+button{font:700 17px 'Cairo',sans-serif;border:0;border-radius:999px;padding:11px 28px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+button:active{transform:scale(.96)}
+.yes{background:linear-gradient(135deg,#ff8fbd,#f46da7);color:white;box-shadow:0 7px 18px #f46da755}
+.no{background:#eefaff;color:#397b9a;border:1px solid #bdeeff}
+#progress{font-size:13px;color:#b17b9a;margin-top:22px}
+#letter{display:none;text-align:right;line-height:2.15;font-size:16px;white-space:pre-line}
+#letter h2{text-align:center;color:#e45b9a;line-height:1.6}
+#restart{display:none;margin:20px auto 0;background:#dff7ff;color:#397b9a}
+.heart{font-size:25px}
+@media(max-width:420px){main{padding:22px 15px;margin:3vh auto}button{padding:10px 23px}}
+</style>
+</head>
+<body>
+<div class="bubbles" id="bubbles"></div>
+<main>
+  <div class="heart">🎀 🩵 🎀</div>
+  <h1>مفاجأة صغيرة لأمولة</h1>
+  <p class="subtitle">جاوبي من قلبك يا أحلى أمولة 🤍</p>
+  <section id="quiz">
+    <div id="question">امولتي حبيبتي تحبيني ؟</div>
+    <div class="buttons">
+      <button class="yes" id="yes">أكيد 🤍</button>
+      <button class="no" id="no">لا 🙈</button>
+    </div>
+    <div id="progress">السؤال 1 من 3</div>
+  </section>
+  <section id="letter">
+    <h2>إلى بنتي الدلوعة الحلوة أمولة 🎀🤍</h2>
+    <div id="letterText"></div>
+    <div style="text-align:center;font-size:25px;margin-top:16px">💋 💋 💋 💋 💋</div>
+  </section>
+  <button id="restart">نعيد المفاجأة؟ 🎀</button>
+</main>
+<script>
+const questions=[
+"امولتي حبيبتي تحبيني ؟",
+"امولتي حبيبتي هل تشتاقيلي لما اغيب عنك 🥹 ؟",
+"أمولتي حبيبتي هل تقبلين الزواج مني و نقضي العمر لآخر يوم بعمرنا ياعمري 💍 ؟"
+];
+const message=`إلى بنتي الدلوعة الحلوة أمولة 🎀🤍
+
+أمولتي حبيبتي بدي ياكي تعرفي إنك أحلى شي صار بحياتي وإن وجودك معي بيعني لي كتير يمكن ما بعرف عبر عن كل اللي بقلبي دايما بس اعرفي إنك غالية علي أكتر مما تتصوري بحب أحكي معك وأسمع صوتك الحلو واشوف وجهك الحلو ياعمري وأشاركك تفاصيل يومي حتى لو كانت شغلات بسيطة وبحب اللحظات اللي نقضيها سوا ياروحي وبصراحة أنا لما أفكر بالمستقبل بتخيلك معي وبحلم باليوم اللي نتزوج فيه ونعيش ببيت واحد ونكون احلى عيلة ونبني حياتنا سوا ونكون سند لبعض بكل الظروف بعرف انو المسافة بيناتنا مو سهلة وإنه احياناً نختلف أو نزعل من بعضنا بس مع هيك اتمنى انو نتخطى المشاكل مع بعض ياعمري في سبيل نضل سوا امولتي كل اللي بدي ياه واتمناه إنك تكوني مبسوطة ومرتاحة ونعيش ايام حلوة دائماً هلأ وبكرا وبعدين لآخر يوم بعمرنا ياروحي
+
+أحبك أمولتي واتمنى يجي اليوم اللي نصير فيه جسدياً مع بعض ياعمري لحتى نطلع سوا و ناكل سوا و ننام سوا ونتحمم سوا ونتابع أفلام ومسلسلات سوا ونسهر سوا و بتعرفي شو نسوي كمان حبيبتي يعني حرفياً نسوي كلشي سوا امولتي
+
+أحبك و أعشقك و اموت فيكي أمولتي 🎀🤍
+
+💋💋💋💋💋`;
+let current=0;
+const q=document.getElementById('question'), quiz=document.getElementById('quiz');
+const yes=document.getElementById('yes'), no=document.getElementById('no');
+yes.addEventListener('click',()=>{current++;if(current<questions.length){q.textContent=questions[current];document.getElementById('progress').textContent=`السؤال ${current+1} من 3`;}else{quiz.style.display='none';document.querySelector('.subtitle').style.display='none';document.getElementById('letterText').textContent=message;document.getElementById('letter').style.display='block';document.getElementById('restart').style.display='inline-block';}});
+no.addEventListener('click',()=>{const dx=(Math.random()-.5)*180,dy=(Math.random()-.5)*90;no.style.transform=`translate(${dx}px,${dy}px)`;});
+document.getElementById('restart').addEventListener('click',()=>{current=0;q.textContent=questions[0];document.getElementById('progress').textContent='السؤال 1 من 3';no.style.transform='none';document.getElementById('letter').style.display='none';document.getElementById('restart').style.display='none';document.querySelector('.subtitle').style.display='block';quiz.style.display='block';});
+const holder=document.getElementById('bubbles');
+for(let i=0;i<18;i++){const b=document.createElement('i');b.className='bubble';const s=18+Math.random()*48;b.style.width=s+'px';b.style.height=s+'px';b.style.left=Math.random()*100+'%';b.style.animationDuration=(9+Math.random()*13)+'s';b.style.animationDelay=(-Math.random()*18)+'s';holder.appendChild(b);}
+</script>
+</body></html>
